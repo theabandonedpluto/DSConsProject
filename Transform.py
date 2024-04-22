@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 
 class dataTransformation:
+    
     def __init__(self, df):
         self.df = df
     
