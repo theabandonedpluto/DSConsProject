@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import Extract
 import Transform
+import CorrMatrix
 import Load
 
 def main():
@@ -14,9 +15,12 @@ def main():
     transformer = Transform.dataTransformation(df)
     transformedDf = transformer.transform()
 
+    # correlation matrix
+    df_corrmatrix = CorrMatrix.corrMatrix(transformedDf)
+
     # load
     outputFile = 'cleanedData/HRDfFinished.xlsx'
-    loadResult = Load.loadData(transformedDf, outputFile)
+    loadResult = Load.loadData(transformedDf,df_corrmatrix, outputFile)
 
     if loadResult:
         print('ETL process completed successfully')
